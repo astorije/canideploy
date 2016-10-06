@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/astorije/canideploy/issues"
   },
-  "homepage": "https://github.com/astorije/canideploy#readme"
+  "homepage": "https://github.com/astorije/canideploy#readme",
+  "dependencies": {
+    "express": "4.14.0"
+  }
 }

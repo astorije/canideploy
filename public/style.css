@@ -1,0 +1,96 @@
+/* https://color.adobe.com/Flat-design-colors-1-color-theme-3044245/ */
+
+body {
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+  /* Safari for OS X and iOS (San Francisco), Chrome for OS X (San Francisco), Android, Ubuntu, GNOME, Older Android, Basic web fallback */
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, Cantarell, "Droid Sans","Helvetica Neue", Arial, sans-serif;
+  background-color: silver;
+  color: #555;
+  font-size: 1.2rem;
+  padding: 25px;
+  transition: .2s background-color, .2s color;
+}
+
+::selection {
+  background-color: #555;
+  color: white;
+}
+
+body.no-deploy {
+  background-color: #DF5A49;
+  color: #59241D;
+}
+
+body.no-deploy ::selection {
+  background-color: #DF5A49;
+}
+
+body.maybe-deploy {
+  background-color: #E27A3F;
+  color: #66371C;
+}
+
+body.maybe-deploy ::selection {
+  background-color: #E27A3F;
+}
+
+body.deploy {
+  background-color: #45B29D;
+  color: #21544A;
+}
+
+body.deploy ::selection {
+  background-color: #45B29D;
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+#service {
+  outline: none;
+  border: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  background-color: inherit;
+  text-shadow: inherit;
+
+  text-align: center;
+  transition: .2s border-color;
+  border-bottom: 2px solid #555;
+  box-shadow: 0 6px 10px -8px rgba(255, 255, 255, 0.75);
+  width: 250px;
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+#service:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.no-deploy #service {
+  color: #59241D;
+  border-color: #59241D;
+}
+
+body.maybe-deploy #service {
+  color: #66371C;
+  border-color: #66371C;
+}
+
+body.deploy #service {
+  color: #21544A;
+  border-color: #21544A;
+}
+
+#verdict {
+  font-size: 5em;
+  margin-bottom: 25px;
+}
