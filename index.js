@@ -5,11 +5,16 @@ const server = express();
 
 const PORT = 9876;
 
+try {
+  var data = require('./data.js');
+} catch (_) {
+  console.error("Error: ./data.js file was not found");
+  process.exit(1);
+}
+
 server.listen(PORT, () =>
   console.log(`canideploy server listening on port ${PORT}`)
 );
-
-const data = require('./data.js');
 
 server.use(express.static(`${__dirname}/public`));
 
