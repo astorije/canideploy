@@ -5,15 +5,22 @@ const server = express();
 
 const PORT = 9876;
 
+function color(code) {
+  return (str) => `${code}${str}\x1B[39m`;
+}
+
+const red = color('\x1B[31m');
+const green = color('\x1B[32m');
+
 try {
   var rules = require('./rules.js');
 } catch (_) {
-  console.error("Error: ./rules.js file was not found");
+  console.error(red('[canideploy] There was an error while loading `./rules.js` file'));
   process.exit(1);
 }
 
 server.listen(PORT, () =>
-  console.log(`canideploy server listening on port ${PORT}`)
+  console.log(green(`[canideploy] server listening on port ${PORT}`))
 );
 
 server.use(express.static(`${__dirname}/public`));
