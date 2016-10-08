@@ -49,14 +49,14 @@ function updateUI(json) {
 
   document.querySelector('body').className = (bodyClasses[json.verdict] || '');
   document.querySelector('#verdict').innerHTML = (verdicts[json.verdict] || '');
-  document.querySelector('#reasons').innerHTML = formatReasons(json.reasons);
+  document.querySelector('#messages').innerHTML = formatReasons(json.messages);
 }
 
-function formatReasons(reasons) {
-  return (reasons || []).map((reason, index) => {
+function formatReasons(messages) {
+  return (messages || []).map((message, index) => {
     if (index > 0) {
-      reason = reason.charAt(0).toLowerCase() + reason.slice(1);
+      message = message.charAt(0).toLowerCase() + message.slice(1);
     }
-    return `${reason}<br>`;
+    return `${message}<br>`;
   }).join('And ');
 }

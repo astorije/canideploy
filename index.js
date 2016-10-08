@@ -6,9 +6,9 @@ const server = express();
 const PORT = 9876;
 
 try {
-  var data = require('./data.js');
+  var rules = require('./rules.js');
 } catch (_) {
-  console.error("Error: ./data.js file was not found");
+  console.error("Error: ./rules.js file was not found");
   process.exit(1);
 }
 
@@ -21,21 +21,21 @@ server.use(express.static(`${__dirname}/public`));
 server.get('/:service.json', (req, res) => {
   const service = req.params['service'];
 
-  if (Object.keys(data).indexOf(service) >= 0) {
-    const result = data[service].reduce((acc, hold) => {
-      if (hold.hold && hold.hold(new Date())) {
+  if (Object.keys(rules).indexOf(service) >= 0) {
+    const result = rules[service].reduce((acc, rule) => {
+      if (rule.hold && rule.hold(new Date())) {
         acc.verdict = 'no';
-        acc.reasons.push(hold.reason);
-      } else if (hold.warn && hold.warn(new Date())) {
+        acc.messages.push(rule.message);
+      } else if (rule.warn && rule.warn(new Date())) {
         if (acc.verdict === 'yes') {
           acc.verdict = 'maybe';
         }
-        acc.reasons.push(hold.reason);
-      } else if (hold.info && hold.info(new Date())) {
-        acc.reasons.push(hold.reason);
+        acc.messages.push(rule.message);
+      } else if (rule.info && rule.info(new Date())) {
+        acc.messages.push(rule.message);
       }
       return acc;
-    }, { verdict: 'yes', reasons: [] });
+    }, { verdict: 'yes', messages: [] });
 
     res.json(result);
   } else {
